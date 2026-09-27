@@ -1,0 +1,90 @@
+package com.example.c39a
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddBox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.c39a.ui.theme.C39ATheme
+
+class ProfileActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            ProfileBody()
+        }
+    }
+}
+
+@Composable
+fun ProfileBody() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.baseline_arrow_back_ios_24),
+                contentDescription = null,
+                modifier = Modifier.size(20.dp)
+            )
+            Text("sandis2026")
+            Icon(
+                painter = painterResource(R.drawable.baseline_more_horiz_24),
+                contentDescription = null
+            )
+
+        }
+
+        Row(modifier = Modifier.fillMaxWidth()) {
+            Image(
+                painter = painterResource(R.drawable.apple),
+                contentDescription = null,
+                modifier = Modifier
+                    .clip(shape = CircleShape)
+                    .height(80.dp)
+                    .width(80.dp),
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun ProfilePreview() {
+    ProfileBody()
+}
