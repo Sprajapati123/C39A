@@ -69,7 +69,11 @@ fun ProfileBody() {
 
         }
 
-        Row(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+            ) {
             Image(
                 painter = painterResource(R.drawable.apple),
                 contentDescription = null,
@@ -79,6 +83,31 @@ fun ProfileBody() {
                     .width(80.dp),
                 contentScale = ContentScale.Crop
             )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("714")
+                Text("Posts")
+
+            }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("1M")
+                Text("Followings")
+
+            }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("500k")
+                Text("Followers")
+
+            }
+
+        }
+        Column() {
+
         }
     }
 }
