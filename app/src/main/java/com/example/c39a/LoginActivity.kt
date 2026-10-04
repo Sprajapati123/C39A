@@ -85,51 +85,44 @@ fun LoginBody() {
                 .fillMaxWidth()
                 .padding(vertical = 15.dp, horizontal = 15.dp)
         ) {
-            Card(
-                modifier = Modifier
+            SocialMediaCard(
+                "Facebook", R.drawable.facebook, Modifier
                     .weight(1f)
-                    .height(70.dp),
-                shape = RoundedCornerShape(10.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color.Blue.copy(0.1f)
-                )
-            ) {
-               Row(modifier = Modifier.fillMaxSize(),
-                   verticalAlignment = Alignment.CenterVertically,
-                   horizontalArrangement = Arrangement.Center
-                   ) {
-                   Image(
-                       painterResource(R.drawable.facebook),
-                       contentDescription = null,
-                       modifier = Modifier.size(30.dp)
-                   )
-                   Spacer(modifier = Modifier.width(10.dp))
-                   Text("Facebook")
-               }
-            }
+                    .height(70.dp)
+            )
             Spacer(modifier = Modifier.width(20.dp))
-            Card(
-                modifier = Modifier
+            SocialMediaCard(
+                "Google", R.drawable.google, Modifier
                     .weight(1f)
-                    .height(70.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color.Blue.copy(0.1f)
-                )
-            ) {
-                Row(modifier = Modifier.fillMaxSize(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        painterResource(R.drawable.google),
-                        contentDescription = null,
-                        modifier = Modifier.size(30.dp)
-                    )
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text("Google")
-                }
-            }
+                    .height(70.dp)
+            )
 
+        }
+    }
+}
+
+
+@Composable
+fun SocialMediaCard(label: String, image: Int, modifier: Modifier) {
+    Card(
+        modifier = modifier,
+        shape = RoundedCornerShape(10.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.Blue.copy(0.1f)
+        )
+    ) {
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painterResource(image),
+                contentDescription = null,
+                modifier = Modifier.size(30.dp)
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Text(label)
         }
     }
 }
