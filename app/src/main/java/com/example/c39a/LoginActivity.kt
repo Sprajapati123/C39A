@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -98,12 +99,25 @@ fun LoginBody() {
             )
 
         }
+        Row(modifier = Modifier.fillMaxWidth()) {
+            HorizontalDivider(
+                thickness = 1.dp,
+                modifier = Modifier.weight(1f)
+            )
+            Text("OR")
+            HorizontalDivider(
+                thickness = 1.dp,
+                modifier = Modifier.weight(1f)
+            )
+        }
     }
 }
 
 
+
 @Composable
 fun SocialMediaCard(label: String, image: Int, modifier: Modifier) {
+
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(10.dp),
