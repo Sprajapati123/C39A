@@ -1,4 +1,4 @@
-package com.example.c39a
+package com.example.c39a.view
 
 import android.app.Activity
 import android.content.Intent
@@ -23,13 +23,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -39,19 +36,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.c39a.ui.theme.C39ATheme
+import com.example.c39a.R
 import com.example.c39a.ui.theme.PurpleGrey80
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,12 +67,14 @@ fun LoginBody() {
 
     val context = LocalContext.current
 
+    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     val activity = context as Activity?
+
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(12.dp)
+//            .padding(12.dp)
             .background(color = Color.White)
     ) {
         Spacer(modifier = Modifier.height(70.dp))
@@ -200,8 +197,10 @@ fun LoginBody() {
                     fontSize = 16.sp,
                     color = Color.Blue
                 ), modifier = Modifier.clickable {
-                    val intent = Intent(context,
-                        RegistrationActivity::class.java)
+                    val intent = Intent(
+                        context,
+                        RegistrationActivity::class.java
+                    )
 
                     context.startActivity(intent)
 
