@@ -26,7 +26,8 @@ interface UserRepo {
 //    }
 
     //database
-    fun addUserToDatabase(id: String, model: UserModel, callback: (Boolean, String) -> Unit)
+    fun addUserToDatabase(id: String, model: UserModel,
+                          callback: (Boolean, String) -> Unit)
 
     fun getUserById(id:String,
                     callback: (Boolean, String, UserModel?) -> Unit)
