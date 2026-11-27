@@ -1,13 +1,30 @@
 import com.example.c39a.model.UserModel
 import com.example.c39a.repository.UserRepo
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class UserRepoImpl : UserRepo {
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+
+    val ref: DatabaseReference = database.getReference("users")
+
+
     override fun login(
         email: String,
         password: String,
         callback: (Boolean, String) -> Unit
     ) {
-        TODO("Not yet implemented")
+        auth.signInWithEmailAndPassword(email,password)
+            .addOnCompleteListener {
+                if(it.isSuccessful){
+                   callback(true,"Login successfully")
+                }else{
+                   callback(false,"${it.exception}")
+
+                }
+            }
     }
 
     override fun register(
